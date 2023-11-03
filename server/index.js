@@ -5,6 +5,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import clientRoutes from "./routes/clients.js";
+import generalRoutes from "./routes/general.js";
+import managementRoutes from "./routes/management.js";
+import salesRoutes from "./routes/sales.js";
 
 // CONFIGURATION
 dotenv.config();
@@ -17,9 +21,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-
 // ROUTES
-app.use("/client",clientRoutes);
-app.use("/general",generalRoutes);
-app.use("/management",managementRoutes);
-app.use("/sales",salesRoutes);
+app.use("/client", clientRoutes);
+app.use("/general", generalRoutes);
+app.use("/management", managementRoutes);
+app.use("/sales", salesRoutes);
+
+// MONGOOSE SETUP
+const PORT = process.env.PORT || 9001;
+mongoose
+  .connect(process.env.Mongo_URL, {
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`\nServer running .... Port ${PORT}\n`));
+  })
+  .catch((error) => console.log(`${error} did not connected`));
