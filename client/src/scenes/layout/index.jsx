@@ -19,7 +19,7 @@ const Layout = () => {
       />
       <Box>
         <Navbar
-          sSidebarOpen={isSidebarOpen}
+          isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
         {/* Render children components */}
