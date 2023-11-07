@@ -41,6 +41,6 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`\nServer running .... Port ${PORT}\n`));
 
-    User.insertMany(dataUser);
+    // User.insertMany(dataUser);
   })
   .catch((error) => console.log(`${error} did not connected`));
