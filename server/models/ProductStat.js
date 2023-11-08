@@ -6,17 +6,17 @@ const ProductStatSchema = new mongoose.Schema(
     yearlySalesTotal: Number,
     year: Number,
     monthlyData: [
-        {
-            month: String,
-            totalSales: Number,
-            totalUnits: Number
-        }
-    ],
-    dailyData: {
-        date: String,
+      {
+        month: String,
         totalSales: Number,
         totalUnits: Number,
-    }
+      },
+    ],
+    dailyData: {
+      date: String,
+      totalSales: Number,
+      totalUnits: Number,
+    },
   },
   { timestamps: true }
 );
