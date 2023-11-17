@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { Search } from "@mui/icons-material";
 import { IconButton, TextField, InputAdornment } from "@mui/material";
 import {
@@ -21,7 +21,7 @@ const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
         <TextField
           label="Search..."
           sx={{ mb: "0.5rem", width: "15rem" }}
-          onChange={(e) => setSearchInput(e.target.value)}
+          onChange={(event) => setSearchInput(event.target.value)}
           value={searchInput}
           variant="standard"
           InputProps={{

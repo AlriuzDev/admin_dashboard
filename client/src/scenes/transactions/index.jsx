@@ -4,6 +4,7 @@ import { useGetTransactionsQuery } from "../../state/api";
 import Header from "../../components/Header";
 import { useTheme } from "@emotion/react";
 import { Box } from "@mui/material";
+import DataGridCustomToolbar from "../../components/DataGridCustomToolbar";
 
 useState;
 
@@ -16,6 +17,8 @@ const Transactions = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
+
+  const [searchInput, setSearchInput] = useState("");
 
   const { data, isLoading } = useGetTransactionsQuery({
     page,
@@ -90,6 +93,19 @@ const Transactions = () => {
           getRowId={(row) => row._id}
           rows={(data && data.transactions) || []}
           columns={columns}
+          rowCount={(data && data.total) || 0}
+          rowsPerPageOptions={[20,50, 100]}
+          pagination
+          page={page}
+          pageSize={pageSize}
+          sortingMode="server"
+          onPaginationModelChange={(newPage) => setPage(newPage)}
+          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+          components={{ Toolbar: DataGridCustomToolbar }}
+          componentsProps={{
+            toolbar: { searchInput, setSearchInput, setSearch },
+          }}
         />
       </Box>
     </Box>
