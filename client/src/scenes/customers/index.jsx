@@ -74,7 +74,6 @@ const Customers = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text":{
             color: `${theme.palette.secondary[200]} !important`,
           }
-
         }}
       >
         <DataGrid
