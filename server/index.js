@@ -15,12 +15,15 @@ import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductStat from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
+import OverallStat from "./models/OverallStat.js";
 import {
   dataUser,
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } from "./data/index.js";
+
 
 // CONFIGURATION
 dotenv.config();
@@ -49,6 +52,7 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`\nServer running .... Port ${PORT}\n`));
 
+    // OverallStat.insertMany(dataOverallStat);
     // User.insertMany(dataUser);
     // Product.insertMany(dataProduct);
     // Transaction.insertMany(dataTransaction);
